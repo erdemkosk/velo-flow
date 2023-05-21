@@ -1,5 +1,7 @@
-const { app, Tray, Menu, nativeImage, shell } = require('electron')
+const { app, Tray, Menu, nativeImage } = require('electron')
+const path = require('path')
 const si = require('systeminformation')
+const openAboutWindow = require('about-window').default;
 
 let tray
 
@@ -21,15 +23,22 @@ app.whenReady().then(() => {
        submenu: [
           {
             label: 'Learn More',
-            click: (menuItem, window, e) => {
-             shell.openExternal("https://www.erdemkosk.com")
-          }
+            click: () =>
+                        openAboutWindow({
+                            icon_path: path.join(__dirname, '../icon.png'),
+                            copyright: 'Copyright (c) 2023 Mustafa Erdem Köşk',
+                            package_json_dir: path.join(__dirname, '..'),
+                            product_name: 'VeloFlow',
+                            homepage: 'https://erdemkosk.com/',
+                            adjust_window_size: true,
+
+                        }),
          },
        ]
     },
     {
       role: 'quit',
-      click: (menuItem, window, e) => {
+      click: () => {
         app.quit();
      }
    }
@@ -69,3 +78,7 @@ function bytesToSize(bytes) {
 
   return val + ' ' + sizes[i];
 }
+
+app.on('window-all-closed', (event) => {
+  event.preventDefault();
+});
