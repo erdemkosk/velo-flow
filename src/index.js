@@ -53,8 +53,8 @@ app.whenReady().then(() => {
         totalDownload = bytesToSize((data[0].rx_sec) ? (data[0].rx_sec).toFixed() : 0);
         totalUpload = bytesToSize((data[0].tx_sec) ? (data[0].tx_sec).toFixed() : 0);
 
-       tray.setTitle('⬆' + totalDownload + '   ⬇' + totalUpload)
-        
+       tray.setTitle('⬇' + totalDownload + '   ⬆' + totalUpload)
+       
     });
   }, 1000)
 })

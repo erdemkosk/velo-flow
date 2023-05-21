@@ -1,7 +1,7 @@
 {
   "name": "velo-flow",
   "productName": "VeloFlow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight and intuitive desktop application that provides real-time monitoring of your internet traffic.",
   "main": "src/index.js",
   "scripts": {
